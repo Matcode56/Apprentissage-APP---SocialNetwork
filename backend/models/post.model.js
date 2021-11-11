@@ -3,7 +3,7 @@ const PostSchema= new mongoose.Schema(
     {
         posterId:{
             type: String,
-            requried: true
+            required: true
         },
         message:{
             type: String,
@@ -38,4 +38,6 @@ const PostSchema= new mongoose.Schema(
     }
 )
 
-module.exports= mongoose.model('post', PostSchema)
+
+const postModel= mongoose.model("post", PostSchema);
+module.exports= postModel;

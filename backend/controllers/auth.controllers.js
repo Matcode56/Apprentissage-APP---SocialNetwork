@@ -6,6 +6,7 @@ const jwt= require('jsonwebtoken');
 const gestionError= require('../utils/errors.utils')
 
 module.exports.signUp= async (req,res)=>{
+    console.log(res.locals);
     const pseudo= req.body.pseudo;
     const email= await cryptageEmail();
     const password= await cryptagePassword();
@@ -19,7 +20,7 @@ module.exports.signUp= async (req,res)=>{
         return bcrypt.hash(req.body.password, salt);
     }
   
-    //Création de l'utilisateur dans la base de données
+    //Création de l'utilisateur dans la base de données et cjeck si il n'existe pas déja
 
     try{
         const user= await User.create({pseudo, email, password});
