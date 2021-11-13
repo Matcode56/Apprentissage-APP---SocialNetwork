@@ -52,5 +52,13 @@ module.exports.updatePost= async (req,res)=>{
 
 
 module.exports.deletePost= (req,res)=>{
-    
+    if(!ObjectID.isValid(req.params.id)){
+        return res.status(400).send("ID unknow: "+ req.params.id)
+    }
+    else{
+        Post.findByIdAndRemove(req.params.id, (err, docs)=>{
+            if(!err) res.send(docs);
+            else console.log('Delete error :' + err);
+        })
+    }
 }

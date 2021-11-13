@@ -15,7 +15,7 @@ passwordSchema
 
 module.exports=(req,res, next)=>{
 
-    
+    console.log(req.body)
     if(emailValidator.validate(req.body.email)){
         if(passwordSchema.validate(req.body.password)){
             next()

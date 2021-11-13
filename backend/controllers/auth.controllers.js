@@ -8,13 +8,12 @@ const gestionError= require('../utils/errors.utils')
 module.exports.signUp= async (req,res)=>{
     console.log(res.locals);
     const pseudo= req.body.pseudo;
-    const email= await cryptageEmail();
+    const email= req.body.email;
+    
     const password= await cryptagePassword();
     
-    // Cryptage du mail et du password
-    async function cryptageEmail(){
-        return cryptojs.HmacSHA256(req.body.email, process.env.KEY_CRYPT_EMAIL).toString()
-    }
+    // Cryptage  du password
+
     async function cryptagePassword(){
         const salt = await bcrypt.genSalt();
         return bcrypt.hash(req.body.password, salt);
@@ -37,7 +36,8 @@ module.exports.signUp= async (req,res)=>{
 
 module.exports.login= async(req, res)=>{
 
-    const emailCrypter= cryptojs.HmacSHA256(req.body.email, process.env.KEY_CRYPT_EMAIL).toString();
+    const emailCrypter= cryptojs.AES.encrypt(req.body.email, process.env.KEY_CRYPT_EMAIL).toString();
+    console.log(emailCrypter)
     const password= req.body.password;
     const infosUser= await checkEmailAndPassword(emailCrypter, password);
 
