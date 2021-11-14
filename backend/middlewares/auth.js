@@ -1,6 +1,8 @@
 const jwt= require('jsonwebtoken');
 const UserModel= require('../models/user.models')
 
+
+
 module.exports.checkUser=(req,res, next)=>{
     const token= req.cookies.jwt;
 
@@ -16,7 +18,6 @@ module.exports.checkUser=(req,res, next)=>{
               console.log(user);
               next();
           }
-
       })
     }
     else{

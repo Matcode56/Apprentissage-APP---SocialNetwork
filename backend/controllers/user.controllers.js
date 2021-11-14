@@ -1,13 +1,12 @@
 const User= require('../models/user.models');
 const ObjectID = require("mongoose").Types.ObjectId;
-const cryptojs= require('crypto-js');
 const bcrypt= require('bcrypt');
-const emailValidator= require('email-validator');
 
 
 module.exports.getAllUsers= async(req,res)=>{
     const users= await User.find().select(['pseudo', 'email', 'followers', 'following', 'likes']);
-    res.status(200).json(users);
+    if(users)res.status(200).json(users);
+    else res.status(400).send('erreur')
 }
 
 module.exports.getInfosUser= async(req,res)=>{
@@ -16,52 +15,27 @@ module.exports.getInfosUser= async(req,res)=>{
 }
 
 module.exports.updateUser=(req,res)=>{
-    if (!ObjectID.isValid(req.params.id)){
-    return res.status(400).send("ID unknown : " + req.params.id);
-    }
     
-    else{
         const infoUpdate=req.body;
-        console.log(infoUpdate);
-        let validData= true;
-        checkData();
-        function checkData(){
-            for(const prop in infoUpdate){
-                if(prop !== "email" && prop!=="pseudo"){
-                    return validData= false;
-                }
-            }
-        }
-
-    if(validData){
-        if(!emailValidator.validate(req.body.email)){
-                return res.status(400).json({error: "email invalide"})
-            }
-            else{
-                User.findByIdAndUpdate(
-                    req.params.id,
-                    infoUpdate,
-                    { new: true },
-                    (err, doc) => {
-                      if (!err){ 
-                        res.send(doc);
-                        }
         
-                      else {
-                          console.log("Update error : " + err);
-                        }
-                    });
-                };
+        User.findByIdAndUpdate(
+            req.params.id,
+            infoUpdate,
+            { new: true },
+            (err, doc) => {
+                if (!err){ 
+                    res.send(doc);
+                }
+        
+                else {
+                    console.log("Update error : " + err);
+                }
+            });
+    };
             
-    }
+    
 
-    else{
-        res.send('data not valid')
-    }
     
-    
-    }
-}
 
 module.exports.updateMdp= async (req,res)=>{
     const passwordHash= await cryptagePassword();
@@ -90,15 +64,11 @@ module.exports.updateMdp= async (req,res)=>{
 }
 
 module.exports.deleteUser= async (req,res)=>{
-    if(!ObjectID.isValid(req.params.id)){
-        return res.status(400).send("ID unknow: "+ req.params.id)
-    }
-    else{
+    
         User.findByIdAndRemove(req.params.id, (err, docs)=>{
             if(!err) res.send("utilisateur bien supprimé: "+docs);
             else res.send('Delete error :' + err);
         })
-    }
 }
 
 module.exports.follow= (req,res)=>{
