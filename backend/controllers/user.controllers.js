@@ -4,6 +4,7 @@ const cryptojs= require('crypto-js');
 const bcrypt= require('bcrypt');
 const emailValidator= require('email-validator');
 
+
 module.exports.getAllUsers= async(req,res)=>{
     const users= await User.find().select(['pseudo', 'email', 'followers', 'following', 'likes']);
     res.status(200).json(users);
@@ -63,32 +64,29 @@ module.exports.updateUser=(req,res)=>{
 }
 
 module.exports.updateMdp= async (req,res)=>{
-    console.log(req.params.id)
-    if (!ObjectID.isValid(req.params.id)){
-        return res.status(400).send("ID unknown : " + req.params.id);
-        }
-        
-    else{
-       const currentPassword= req.body.currentPassword;
-       const newPassword= req.body.newPassword;
+    const passwordHash= await cryptagePassword();
 
-       const user= await User.findById(req.params.id);
-
-       if(user){
-            bcrypt.compare(currentPassword, user.password, function (err, isValid) {
-                if (isValid) {
-                res.send('mdp good')
-                }
-                else{
-                    res.send('mot de passe invalide')
-                }
-            })
-       }
-       else{
-           res.status(400).send('erreur lors de la recherche de la base donées')
-       }
-
+    async function cryptagePassword(){
+        const salt = await bcrypt.genSalt();
+        const Hash= await bcrypt.hash(req.body.newPassword, salt);
+        return Hash
     }
+
+
+    User.findByIdAndUpdate(
+        req.params.id,
+        {password: passwordHash},
+        {new: true},
+        (err, docs)=>{
+            if(!err){
+                res.status(200).send('mdp changed: '+ docs)
+            }
+            else{
+                res.send(400).send(err)
+            }
+        }
+    )
+
 }
 
 module.exports.deleteUser= async (req,res)=>{
