@@ -82,7 +82,7 @@ module.exports.follow= (req,res)=>{
     else{
         User.findByIdAndUpdate(
             req.params.id,
-            { following: req.body.idToFollow },
+            {$addToSet: {following: req.body.idToFollow} },
             { new: true},
             (err, docs) => {
               //if (!err) res.status(201).json(docs);
@@ -92,7 +92,7 @@ module.exports.follow= (req,res)=>{
 
           User.findByIdAndUpdate(
             req.body.idToFollow,
-            { followers: req.params.id},
+            { $addToSet: {followers: req.params.id}},
             { new: true},
             (err, docs) => {
               if (!err) res.status(201).json(docs);

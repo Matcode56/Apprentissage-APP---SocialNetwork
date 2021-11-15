@@ -45,6 +45,16 @@ const userSchema= new mongoose.Schema(
         likes:{
             type:[String],
         },
+        comments:{
+            type:[
+                {
+                    postId: String,
+                    text: String,
+                    timestamp: Number
+                }
+
+            ],
+        }
     },
     {
         timestamps: true,
