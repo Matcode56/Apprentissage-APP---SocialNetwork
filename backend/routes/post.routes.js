@@ -12,5 +12,5 @@ router.patch('/unlikePost/:id', middlePost.checkPostId, middlePost.checkIdUser, 
 //comments
 router.patch('/commentPost/:id',middlePost.checkPostId, middlePost.checkIdUser, middlePost.checkDataComment,postController.commentPost);
 router.patch('/editComment/:id', middlePost.checkPostId, middlePost.checkIdUser, middlePost.checkComment, postController.editComment);
-//router.patch('/editComment/:id', postController.deleteComment);
+router.patch('/deleteComment/:id',middlePost.checkPostId, middlePost.checkComment, postController.deleteComment);
 module.exports= router;

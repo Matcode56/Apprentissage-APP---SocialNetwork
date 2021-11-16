@@ -37,6 +37,7 @@ module.exports.checkId= async (req,res, next) =>{
         return res.status(400).send("ID unknown : " + req.params.id);
         }
     else{
+        res.locals
         next();
     }
 }

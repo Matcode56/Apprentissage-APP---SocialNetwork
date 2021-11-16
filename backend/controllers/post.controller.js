@@ -175,3 +175,25 @@ module.exports.editComment= async(req,res,next)=>{
     
 }
 
+module.exports.deleteComment= (req,res)=>{
+
+    try{
+    Post.findByIdAndUpdate(
+        req.params.id, 
+        {
+            $pull:{
+                comments: {
+                    _id: req.body.commentId
+                }
+            }
+        },
+        {new: true},
+        (err, docs)=>{
+        if(!err) res.send('commentaire supprimé: '+ docs);
+        else console.log('Delete error :' + err);
+    })
+    }
+    catch(err){
+        res.send(err)
+    }
+}

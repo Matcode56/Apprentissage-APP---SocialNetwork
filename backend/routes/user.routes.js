@@ -1,7 +1,12 @@
 const router= require('express').Router();
 const authController= require('../controllers/auth.controllers');
 const userController= require('../controllers/user.controllers');
-const middleUser= require('../middlewares/user')
+const middleUser= require('../middlewares/user');
+const upload= require('../middlewares/upload');
+const uploadController= require('../controllers/upload.controllers')
+//const fileType = require('file-type');
+//const multer= require('multer');
+
 
 
 // authentification
@@ -18,4 +23,8 @@ router.delete("/:id", middleUser.checkId,userController.deleteUser);
 router.patch("/:id/follow", userController.follow);
 router.patch("/:id/unfollow", userController.unfollow);
 
+
+//upload
+
+router.post('/photoProfil/:id',middleUser.checkId  ,upload.single('profilPhoto'), uploadController)
 module.exports= router;
