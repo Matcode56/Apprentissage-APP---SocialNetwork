@@ -11,6 +11,11 @@ module.exports.readPost= (req,res)=>{
 
 module.exports.createPost= async (req,res)=>{
     
+    if(req.files !== null){
+        res.send('ok fuck')
+    }
+
+
     try{
         const post= await Post.create({
             posterId: req.body.posterId,

@@ -1,6 +1,7 @@
 const router= require('express').Router();
 const postController= require('../controllers/post.controller');
-const middlePost= require('../middlewares/post')
+const middlePost= require('../middlewares/post');
+const upload= require('../middlewares/upload')
 
 router.get('/', postController.readPost);
 router.post('/', middlePost.checkPosterId, postController.createPost);
@@ -14,3 +15,9 @@ router.patch('/commentPost/:id',middlePost.checkPostId, middlePost.checkIdUser, 
 router.patch('/editComment/:id', middlePost.checkPostId, middlePost.checkIdUser, middlePost.checkComment, postController.editComment);
 router.patch('/deleteComment/:id',middlePost.checkPostId, middlePost.checkComment, postController.deleteComment);
 module.exports= router;
+
+
+//upload
+
+
+router.post('/image/', upload.single('postImage'))

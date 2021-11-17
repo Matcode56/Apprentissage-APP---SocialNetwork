@@ -5,7 +5,13 @@ const User= require('../models/user.models');
 
     const storage= multer.diskStorage({
         destination: (req, file, cb)=>{
-            cb(null,`${__dirname}/../../client/public/PhotoProfil`)}, 
+            if(file.fieldname=== 'profilPhoto') {
+                cb(null,`${__dirname}/../../client/public/PhotoProfil`)
+            }
+            if(file.fieldname === 'postImage'){
+                cb(null,`${__dirname}/../../client/public/PhotoPost`)
+            }
+        }, 
         filename: (req, file, cb)=>{
             console.log(file)
             let mimetype= file.mimetype;
