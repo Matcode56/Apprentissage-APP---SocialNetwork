@@ -1,5 +1,6 @@
-const mongoose= require('mongoose');
+//Création du model USER mongoDB
 
+const mongoose= require('mongoose');
 
 const userSchema= new mongoose.Schema(
     {

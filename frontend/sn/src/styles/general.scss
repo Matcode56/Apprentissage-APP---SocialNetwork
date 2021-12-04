@@ -1,0 +1,26 @@
+body{
+    margin:0;
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url("../styles/font/Roboto/Roboto-Bold.ttf");
+}
+
+body{
+    font-family: Roboto
+}
+
+h1,h2,h3,h4,p,div{
+    margin:0;
+    padding:0;
+    color: #343434
+}
+button{
+    padding: 0px;
+    margin: 0px;
+}
+
+a{
+    text-decoration: none;
+}

@@ -1,3 +1,5 @@
+//Configuration de la connexion à la base mongoDB
+
 const mongoose = require("mongoose");
 
 mongoose

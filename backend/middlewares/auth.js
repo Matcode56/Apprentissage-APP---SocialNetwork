@@ -1,6 +1,8 @@
+//Importation de jwt pour controler le cookie d'authentification
 const jwt= require('jsonwebtoken');
-const UserModel= require('../models/user.models')
 
+//Import UserModel pour intéragir avec la DB
+const UserModel= require('../models/user.models')
 
 
 module.exports.checkUser=(req,res, next)=>{
@@ -10,17 +12,20 @@ module.exports.checkUser=(req,res, next)=>{
       jwt.verify(token, process.env.TOKEN_SECRET, async(err, decodedToken)=>{
           if(err){
               res.cookie('jwt', '', {maxAge:1})
+              console.log(user._id)
               next();
           }
           else{
               console.log(decodedToken)
               let user= await UserModel.findById(decodedToken.userId);
-              console.log(user);
+              console.log(user._id)
+              res.locals.user= user
               next();
           }
       })
     }
     else{
+        res.locals.user=null;
         next();
     }
 }
@@ -28,19 +33,19 @@ module.exports.checkUser=(req,res, next)=>{
 module.exports.requireAuth= (req,res,next)=>{
     const token= req.cookies.jwt; 
     console.log(token)
+    console.log(token)
     if(token){
         jwt.verify(token, process.env.TOKEN_SECRET, async(err, decodedToken)=>{
             if(err){
-                console.log(err)
+                res.send(200).send('no TOKEN')
             }
             else{
-                console.log(decodedToken)
                 next();
             }
         })
     }
 
     else{
-        console.log('no token');
+        res.send("no token");
     }
 }

@@ -1,15 +1,28 @@
+//Import UserModel et PostModel pour intéragir avec la base de donnée
 const Post= require('../models/post.model');
 const User= require('../models/user.models');
+fs= require('fs');
 
 module.exports.checkPosterId= async(req,res,next)=>{
+    console.log(req.body.posterId)
     const idToCheck= req.body.posterId;
     User.findById(idToCheck, function(err, docs){
         if(docs){
+            console.log('ok')
             next();
         }
         
         if(err){
-            res.send('erreur postId');
+            if(req.file){
+                files= fs.readdirSync(__dirname+'/../../client/public/PhotoPost');
+                const photoToDelete= files.filter(e=> e.includes('PosterId-'+req.body.posterId+'.'));
+                photoToDelete.map(e=> fs.unlinkSync(__dirname+'/../../client/public/PhotoPost/'+e));
+                res.send('erreur posterId 111');
+                
+            }
+            else{
+                res.send('erreur posterId');
+            }
         }
     })
 }

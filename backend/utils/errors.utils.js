@@ -1,13 +1,16 @@
 module.exports.signUpErrors= (err)=>{
-    let errors={pseudo: '', email: ''}
-   
-    if(err.keyPattern.hasOwnProperty('pseudo')){
-        errors.pseudo="Pseudo incorrect ou déja utilisé"
-    }
+    let errors="";
+    
 
     if(err.keyPattern.hasOwnProperty('email')){
-        errors.email="Email incorrect ou déja utilisé"
+        errors="Email déja utilisé"
     }
+
+    if(err.keyPattern.hasOwnProperty('pseudo')){
+        errorPseudoMessage= "Pseudo incorrect ou déja utilisé"
+        errors= errorPseudoMessage;
+    }
+    console.log(errors)
     
     return errors
 }

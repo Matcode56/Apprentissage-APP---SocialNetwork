@@ -1,5 +1,8 @@
+//Import UserModel pour intéragir avec la base de donnée
 const User= require('../models/user.models');
 const ObjectID = require("mongoose").Types.ObjectId;
+
+//Ajout de bcrypt pour hasher le mot de passe updated
 const bcrypt= require('bcrypt');
 
 

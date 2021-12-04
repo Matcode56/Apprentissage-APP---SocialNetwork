@@ -1,5 +1,8 @@
+//Import UserModel et PostModel pour intéragir avec la base de donnée
 const Post= require('../models/post.model');
 const User= require('../models/user.models');
+
+const fs = require('fs');
 
 
 module.exports.readPost= (req,res)=>{
@@ -10,16 +13,33 @@ module.exports.readPost= (req,res)=>{
 }
 
 module.exports.createPost= async (req,res)=>{
-    
-    if(req.files !== null){
-        res.send('ok fuck')
-    }
 
+    let namePostImage= getNameImagePost();
+    console.log(req.file)
+
+    function getNameImagePost(){
+        if(req.file){
+            const nameAllPhoto= fs.readdirSync(__dirname+'/../../frontend/sn/public/upload/PhotoProfil');
+            console.log(nameAllPhoto);
+            const nameImagePostOfUser= nameAllPhoto.filter(e=> e.includes(req.body.posterId));
+            const datesOfPosts= nameImagePostOfUser.map(e=> e.substring(0, e.indexOf('-PosterId')))
+            const datesOfPostsNumber= datesOfPosts.map(e=> parseInt(e))
+
+            const DatePostImage= datesOfPostsNumber.filter(e => e==Math.max(...datesOfPostsNumber));
+            const namePostImage= nameAllPhoto.filter(e=> e.substring(0, e.indexOf('-PosterId')) == DatePostImage.toString())
+
+            return namePostImage;
+        }
+        else{
+            return false;
+        }
+    }
 
     try{
         const post= await Post.create({
             posterId: req.body.posterId,
             message: req.body.message,
+            picture: req.file ? "../../frontend/sn/public/upload/PhotoProfil"+namePostImage : "",
             likers:[],
             comments:[]
         });
@@ -115,9 +135,6 @@ module.exports.commentPost= async(req,res)=>{
    const userCommenter= await User.findById(req.body.userId);
    const pseudoCommenter= userCommenter.pseudo;
    const times= new Date();
- 
-   
-   
     
    Post.findByIdAndUpdate(
         req.params.id,
@@ -194,11 +211,19 @@ module.exports.deleteComment= (req,res)=>{
         },
         {new: true},
         (err, docs)=>{
-        if(!err) res.send('commentaire supprimé: '+ docs);
-        else console.log('Delete error :' + err);
+        if(!err) res.satus(200).send('commentaire supprimé: '+ docs);
+        else res.status(400).send('Delete error :' + err);
     })
     }
     catch(err){
         res.send(err)
     }
+}
+
+module.exports.test= (req,res,next)=>{
+ 
+ 
+    console.log(req.body.posterId)
+    console.log("req.FILLLLEE")
+    console.log(req.file)
 }

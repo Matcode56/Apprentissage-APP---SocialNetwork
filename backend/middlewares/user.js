@@ -1,8 +1,12 @@
+//Importation module passwordValidator et emailValidator afin de checker l'email et le password
 const passwordValidator= require('password-validator')
 const emailValidator= require('email-validator');
 const passwordSchema= new passwordValidator();
-const ObjectID = require("mongoose").Types.ObjectId;
+
+//Importation de bcrypt afin de comparer les passwords hasher de la base de données avec le password entrant.
 const bcrypt=require("bcrypt");
+
+//Importation du model User pour intéragir avec la base de donnée
 const User= require('../models/user.models')
 
 passwordSchema
@@ -22,25 +26,25 @@ module.exports.checkEmailAndPswRegister=(req,res, next)=>{
             next()
         }
         else{
-            return res.status(400).json({error: `Le mot de passe n'est pas assez fort ${passwordSchema.validate('req.body.password', { list: true })}`})
+            return res.status(400).send(`Le mot de passe n'est pas assez fort ${passwordSchema.validate('req.body.password', { list: true })}`)
         }
     }
     else{
-        return res.status(400).json({error: "email invalide"})
+        return res.status(400).send("email invalide")
     }
     
 }
 
 module.exports.checkId= async (req,res, next) =>{
     const id= req.params.id;
-    if (!ObjectID.isValid(id)){
-        return res.status(400).send("ID unknown : " + req.params.id);
+    User.findById(idToCheck, function(err, docs){
+        if(err || !docs){
+            res.send('erreur id User');
         }
-    else{
-        res.locals
-        next();
-    }
+        else next();
+    })
 }
+
 
 
 module.exports.checkUpdatePsw= async (req,res, next)=>{

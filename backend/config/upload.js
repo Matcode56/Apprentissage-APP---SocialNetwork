@@ -1,23 +1,29 @@
-const multer= require('multer');
-const User= require('../models/user.models');
+//Configuration de multer pour importer des images
 
+const multer= require('multer');
 
 
     const storage= multer.diskStorage({
         destination: (req, file, cb)=>{
             if(file.fieldname=== 'profilPhoto') {
-                cb(null,`${__dirname}/../../client/public/PhotoProfil`)
+                cb(null,`${__dirname}/../../frontend/sn/public/upload/PhotoProfil`)
             }
             if(file.fieldname === 'postImage'){
-                cb(null,`${__dirname}/../../client/public/PhotoPost`)
+                cb(null,`${__dirname}/../../frontend/sn/public/upload/PhotoProfil`)
             }
         }, 
         filename: (req, file, cb)=>{
-            console.log(file)
+            
             let mimetype= file.mimetype;
             let suffix= mimetype.replace('image/', '')
             
-            cb(null, Date.now()+'-User-'+ req.params.id+ '.'+ suffix.replace('img/', ''))
+            if(file.fieldname === 'profilPhoto'){
+                cb(null, Date.now()+'-User-'+ req.params.id+ '.'+ suffix.replace('img/', ''))
+            }
+
+            if(file.fieldname === 'postImage'){
+                cb(null, Date.now()+'-PosterId-'+ req.body.posterId+ '.'+ suffix.replace('img/', ''))
+            }
         }   
     }) 
     

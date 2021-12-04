@@ -1,3 +1,5 @@
+//Création du model Post mongoDB
+
 const mongoose= require("mongoose");
 const PostSchema= new mongoose.Schema(
     {
