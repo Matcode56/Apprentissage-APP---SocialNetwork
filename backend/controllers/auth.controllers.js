@@ -68,7 +68,7 @@ module.exports.login= async(req, res)=>{
     //Création du cookie pour authentifier l'user sur les prochaines interactions
     async function sendCookie(userId){
         try{
-        const maxAge=60000
+        const maxAge=60000000000000000000000
         const token = jwt.sign({userId}, process.env.TOKEN_SECRET, {expiresIn: maxAge});
         res.cookie('jwt', token, 
         {    

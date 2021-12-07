@@ -13,7 +13,7 @@ module.exports.getAllUsers= async(req,res)=>{
 }
 
 module.exports.getInfosUser= async(req,res)=>{
-    const user= await User.findOne({_id: req.params.id}).select(['pseudo', 'email', 'followers', 'following', 'likes']);
+    const user= await User.findOne({_id: req.params.id}).select(['pseudo', 'email', 'followers', 'following', 'likes', 'picture']);
     res.status(200).json(user);
 }
 

@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import {NavLink} from "react-router-dom";
 import '../../styles/navbar/_nav.scss';
 import Logout from "../auth/logout";
 import { UidContext } from "../context/context";
 
 const Nav=() =>{
+  const uid= useContext(UidContext);
+  console.log(uid)
+
+
   return(
       <nav>
           
@@ -12,7 +16,9 @@ const Nav=() =>{
                     <i class="fab fa-phoenix-framework logoNav"></i>
                     <p className="textLogo">SocialGrowth</p>
               </NavLink>
-              <Logout/>
+
+              {uid&& <Logout/>}
+              
               
             
       </nav>

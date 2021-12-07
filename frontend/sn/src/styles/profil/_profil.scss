@@ -1,0 +1,46 @@
+.blocProfil{
+    padding-top:3%;
+    border: 2px grey solid;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    padding-bottom: 3%;
+
+}
+
+.blocPhoto{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px solid black;
+}
+
+
+.pImage{
+    width:150px;
+    height:150px 
+}
+
+.pImage img{
+    width:100%;
+    height: 100%;
+    border-radius: 50%;
+  
+}
+
+.blocInfosProfil{
+    padding-left:10%;
+}
+
+.contact{
+    margin-bottom: 20px;
+}
+
+.followFollowing{
+    display: flex;
+}
+
+.followFollowing p{
+    margin-right: 5%;
+}

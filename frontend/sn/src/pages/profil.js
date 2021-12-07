@@ -1,10 +1,11 @@
 import React from "react";
+import UpdateProfil from "../components/profil/updateProfil";
 
 
 const Profil=() =>{
   return(
   <>
-    <p>Yoloooo ça marche</p>
+    <UpdateProfil/>
   </>)
 }
 

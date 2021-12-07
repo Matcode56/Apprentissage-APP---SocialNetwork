@@ -37,7 +37,7 @@ module.exports.checkEmailAndPswRegister=(req,res, next)=>{
 
 module.exports.checkId= async (req,res, next) =>{
     const id= req.params.id;
-    User.findById(idToCheck, function(err, docs){
+    User.findById(id, function(err, docs){
         if(err || !docs){
             res.send('erreur id User');
         }

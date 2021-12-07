@@ -1,0 +1,40 @@
+.bottomNav{
+    position: fixed;
+    bottom: 0%;
+    height:45px;
+    border-top: solid black 2px;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.iconBottomNav{
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.iconBottomNav a{
+    margin-right:5%;
+    width:35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconBottomNav a:last-child{
+    margin-right: 0%;
+}
+.iconBottomNav a i{
+    font-size: 1.5em;
+    color: #c2bfb6;
+    
+}
+
+.iconBottomNav .active{
+    border-bottom: 3px solid #4b575e;
+    padding-bottom: 5px;
+}

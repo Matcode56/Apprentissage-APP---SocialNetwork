@@ -14,6 +14,7 @@ module.exports.profilPhoto= (req,res,next)=>{
 
         function getData() {
                 files= fs.readdirSync(__dirname+'/../../frontend/sn/public/upload/PhotoProfil');
+           
                 return files
             }
             
@@ -31,10 +32,12 @@ module.exports.profilPhoto= (req,res,next)=>{
 
 
             try{
-                arrPhotoToDelete.map(e=> fs.unlinkSync(__dirname+'/../../frontend/sn/public/upload/PhotoProfil'+e))
+                
+                arrPhotoToDelete.map(e=> fs.unlinkSync(__dirname+'/../../frontend/sn/public/upload/PhotoProfil/'+e))
                 const nameAllPhoto= fs.readdirSync(__dirname+'/../../frontend/sn/public/upload/PhotoProfil');
                 const nameNewPhoto= nameAllPhoto.filter(e=> e.includes(req.params.id))
                 
+                console.log(nameAllPhoto)
                 updateLinkPhotoUser(nameNewPhoto)
 
             }
@@ -55,7 +58,7 @@ module.exports.profilPhoto= (req,res,next)=>{
        User.findByIdAndUpdate(
               req.params.id,
               { $set : 
-                {picture: "/../../frontend/sn/public/upload/PhotoProfil" + nameNewPhoto}
+                {picture: "/../../frontend/sn/public/upload/PhotoProfil/" + nameNewPhoto}
                 },
               { new: true, upsert: true},
               (err, docs) => {
