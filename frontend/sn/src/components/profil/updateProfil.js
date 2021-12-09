@@ -1,13 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import "../../styles/profil/_profil.scss"
+import FollowUnfollow from "./followUnfollow";
+import UploadImg from "./uploadImg";
 
 const UpdateProfil= () =>{
-  const userData=  useSelector((state)=> state.userReducer)
-  const statePicture= userData.picture;
- 
-  const namePhoto=statePicture.substring(statePicture.indexOf('Profil') +7)
-  console.log(namePhoto)
+    const userData=  useSelector((state)=> state.userReducer)
+    const [statePicture, setStatePicture]= useState(userData.picture);
+    const [namePhoto, setNamePhoto]= useState("")
+
+    
+    useEffect(()=>{
+        
+        if(userData.picture){
+            setStatePicture(userData.picture)
+        }
+        if(statePicture){
+            const namePhoto=statePicture.substring(statePicture.indexOf('Profil') +7)
+            setNamePhoto(namePhoto)
+        } 
+    }, [userData, statePicture])
+    //const namePhoto=statePicture.substring(statePicture.indexOf('Profil') +7)
+    
     
 
     return(
@@ -17,6 +31,7 @@ const UpdateProfil= () =>{
                 <p className="pImage">
                 <img src={"/upload/PhotoProfil/"+ namePhoto} alt="ok"/>
                 </p>
+                <UploadImg/>
             </div>
 
         <div className="blocInfosProfil">
@@ -24,11 +39,8 @@ const UpdateProfil= () =>{
                 <p>pseudo: {userData.pseudo} </p>
                 <p>contact: {userData.email} </p>
             </div>
-            <div className="followFollowing">
-                <p>followers <br/> {userData.followers} </p>
-                <p>following <br/> {userData.following} </p>
-            </div>
-            </div>
+            <FollowUnfollow/>
+        </div>
         </div>
         </>
   )

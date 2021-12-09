@@ -9,7 +9,7 @@ module.exports.profilPhoto= (req,res,next)=>{
     //Enregistrement de la nouvelle photo de profil et supression de l'ancienne dans notre système de fichier
     registerAndDeleteOlderPhoto()
     function registerAndDeleteOlderPhoto(){
-
+        
         const arrFichier= getData();
 
         function getData() {
