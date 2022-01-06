@@ -17,6 +17,11 @@ module.exports.getInfosUser= async(req,res)=>{
     res.status(200).json(user);
 }
 
+module.exports.getInfoFollow= async(req,res)=>{
+    const user= await User.findOne({_id: req.params.id}).select(['pseudo', 'picture'])
+    res.status(200).json(user);
+}
+
 module.exports.updateUser=(req,res)=>{
     
         const infoUpdate=req.body;

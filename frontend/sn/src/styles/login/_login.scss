@@ -1,4 +1,4 @@
-.LoginPart{
+#blocLogin{
     width:100vw;
     height:100vh;
     display: flex;
@@ -15,7 +15,7 @@
 }
 
 
-.blocAuth{
+#blocAuth{
     background:#e4e6eb;
     width:50%;
     margin: auto;
@@ -25,7 +25,7 @@
     padding-bottom: 40px;
 }
 
-.btnPartLogin{
+#btnPartLogin{
     display:grid;
     grid-template-columns: 1fr 1fr;
     border-right: solid 2px grey;
@@ -33,7 +33,7 @@
 }
 
 
-.btnPartLogin button{
+#btnPartLogin button{
     color: white;
     font-weight: 600;
     width:100%;
@@ -52,8 +52,7 @@
     justify-content: center;
     align-items: center;
 }
-.blocAuth form{
-   
+#blocAuth form{
     display:grid;
     
     grid-template-columns: 1fr 1fr;

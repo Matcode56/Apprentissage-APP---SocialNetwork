@@ -20,6 +20,7 @@ router.get('/logout', authController.logout)
 // User
 router.get("/", userController.getAllUsers);
 router.get("/:id", middleUser.checkId , userController.getInfosUser);
+router.get("/infoFollow/:id", middleUser.checkId, userController.getInfoFollow)
 router.put("/:id", middleUser.checkId, middleUser.checkInfoToChange, userController.updateUser);
 router.put("/:id/psw", middleUser.checkId, middleUser.checkUpdatePsw, userController.updateMdp);
 router.delete("/:id", middleUser.checkId, userController.deleteUser);

@@ -5,8 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import {Provider} from 'react-redux';
 import store from './redux/store'
 
-
-
+//Ajout du Provier de Redux afin que le store soit accessible dans l'ensemble de l'application
 ReactDOM.render(
   <Provider store={store}>
   <React.StrictMode>

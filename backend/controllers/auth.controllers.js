@@ -20,11 +20,13 @@ module.exports.signUp= async (req,res)=>{
         const salt = await bcrypt.genSalt();
         return bcrypt.hash(req.body.password, salt);
     }
+
+    const picture="/upload/PhotoProfil/BasicalPhoto.png"
   
     //Création de l'utilisateur dans la base de données et check si il n'existe pas déja
 
     try{
-        const user= await User.create({pseudo, email, password});
+        const user= await User.create({pseudo, email, password, picture});
         res.status(201).json({user: user._id}) 
     }
 

@@ -1,26 +1,52 @@
-.blocProfil{
-    padding-top:3%;
-    border: 2px grey solid;
+// BLOC PROFIL GENERAL ET BUTTON MODIFIER 
+#blocProfil{
+    margin-top: 30px;
     margin-left: 5%;
     margin-right: 5%;
     display: grid;
-    grid-template-columns: 0.5fr 1fr;
-    padding-bottom: 3%;
+    grid-template-columns: 0.25fr 1fr;
+    border: 2px solid black;
+    position: relative;
+    border-radius: 1em;
+    padding: 1em;
 
 }
 
-.blocPhoto{
+#buttonSettings{
+    position: absolute;
+    right:2%;
+    top: 20px;
+    font-size: 25px;
+   
+}
+
+#buttonSettings button{
+    display: flex;
+    padding: 10px;
+    border-radius: 1rem;
+    border: none;
+    
+}
+
+#buttonSettings button i{
+    margin-right:7px;
+}
+
+//PARTIE PHOTO DE PROFIL / CONTACT
+#blocPhoto{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     border-right: 2px solid black;
+   
+
 }
 
 
-.pImage{
-    width:200px;
-    height:200px;
+#pImage{
+    width:100px;
+    height:100px;
     margin-bottom: 20px;
 }
 
@@ -32,25 +58,117 @@
     margin-bottom: 20px;
 }
 
-.pImage img{
+#pImage img{
     width:100%;
     height: 100%;
     border-radius: 50%;
   
 }
 
-.blocInfosProfil{
-    padding-left:10%;
-}
+//BLOC FOLLOW
 
-.contact{
-    margin-bottom: 20px;
+#blocInfosProfil{
+    padding-left:10%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .followFollowing{
     display: flex;
+   
 }
 
-.followFollowing p{
-    margin-right: 5%;
+.numberFollow{
+    margin-right: 3%;
+    padding: 1em;
+    border-radius: 1em;
+    border: 1px solid black;
+    text-align: center;
+}
+
+
+//Partie Follow au clic de l'utilisateur
+
+.displayPartFollow{
+    position: fixed;
+    left:30%;
+    right:30%;
+    top: 70px;
+    bottom: 60px;
+    background: white;
+    border: solid 1px grey;
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;;
+}
+
+#buttonBack{
+    cursor: pointer;
+    position:absolute;
+    left: 2%;
+    top:10px;
+    color: black;
+    border: black solid 1.5px;
+    border-radius: 100%;
+    padding: 0.2rem;
+}
+
+#buttonFollowPart{
+    display: flex;
+    margin-bottom: 10px;
+}
+
+#pseudoDisplayFollow{
+    text-align: center;
+    padding:18px;
+}
+
+
+.PartFollower{
+    line-height: 30px;
+    width:50%;
+    height:30px;
+    text-align: center;
+    border-right: 2px solid black;
+}
+
+.PartFollowing{
+    width:50%;
+    height:30px;
+    text-align: center;
+    line-height: 30px;
+   
+}
+
+
+
+#infoPersonFollow{
+    display:flex;
+    margin-left: 3%;
+    height: 60px;
+    align-items: center;
+    position: relative;
+    margin-bottom: 10px;
+}
+#infoPersonFollow img{
+    width:55px;
+    height:55px;
+    border-radius: 100%;
+}
+
+#infoPersonFollow p{
+    text-align: center;
+    margin-left: 10%;
+}
+
+#infoPersonFollow button{
+    margin-left: 10%;
+    position: absolute;
+    right:3%;
+    top:30%;
+    padding: 0.6em;
+    border: none;
+    background: #b8536a;
+    color:white;
+    border-radius: 25%;
 }

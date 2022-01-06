@@ -4,20 +4,16 @@ import RouterReact from './routes/routes';
 import './styles/general.scss'
 import axios from "axios"
 import { useDispatch } from 'react-redux';
-import { getUser } from './redux/actions/user.actions';
+import { useSelector } from "react-redux";
+import {getUser} from './redux/actions/user.actions'
 
 
-
-
-
-//<h1>SocialNetwork</h1>
-     //<img src="https://lmimirror3pvr.azureedge.net/static/media/17752/b74af089-fd86-4c69-b898-609bab43de5b/q319-lesmills-fia-webassets_video-ba.jpg" alt="home_image"/>
 function App() {
   const [uid, setUid]= useState(null);
   const dispatch= useDispatch();
 
+  // Récupération du Token de l'utlisateur 
   useEffect( async()=>{
-    console.log(uid)
     await axios({
       method:"get",
       url: "http://localhost:5000/jwtid",
@@ -35,14 +31,12 @@ function App() {
 
     })
     .catch((err)=> console.log(err))
-
-
+    // eécupération des infos utilisateur depuis son token et envoie des infos dans le store Redux
     if(uid){
-      console.log("helloooo")
       dispatch(getUser(uid))
     }
-
   }, [uid])
+
 
 
 

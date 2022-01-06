@@ -1,12 +1,14 @@
 import React from "react";
-import UpdateProfil from "../components/profil/updateProfil";
+import HeadProfil from "../components/profil/HeadProfil/HeadProfil";
 
 
-const Profil=() =>{
+
+const ProfilPage=() =>{
+  
   return(
   <>
-    <UpdateProfil/>
+    <HeadProfil/>
   </>)
 }
 
-export default Profil
+export default ProfilPage

@@ -58,7 +58,7 @@ module.exports.profilPhoto= (req,res,next)=>{
        User.findByIdAndUpdate(
               req.params.id,
               { $set : 
-                {picture: "/../../frontend/sn/public/upload/PhotoProfil/" + nameNewPhoto}
+                {picture: "/upload/PhotoProfil/" + nameNewPhoto}
                 },
               { new: true, upsert: true},
               (err, docs) => {
