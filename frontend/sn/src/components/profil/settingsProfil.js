@@ -2,7 +2,6 @@ import React,{useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import UploadImg from "./uploadImg";
 import '../../styles/profil/_settings.scss'
-import axios from "axios";
 import { updateUser } from "../../redux/actions/user.actions";
 
 
@@ -10,12 +9,15 @@ const SettingsProfil=({handleProfil}) =>{
     
     // Récupération données utilisateur Redux
     const userData=  useSelector((state)=> state.userReducer);
+    const id= userData._id;
+    const dispatch= useDispatch();
+
+    //State
     const [inputMail, setInputMail]= useState();
     const[inputPseudo, setInputPseudo]= useState();
-    const [buttonChange, setButtonChange]= useState(false)
-    const dispatch= useDispatch();
-    const id= userData._id;
-
+   
+    
+  //Modif Pseudo et Mail
    const handlerPseudo= ()=>{
     
      const pseudo= {"pseudo": inputPseudo}

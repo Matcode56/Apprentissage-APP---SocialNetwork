@@ -19,9 +19,7 @@ const Follow=() =>{
     const [infosFollowers, setInfosFollowers]= useState();
     const [infosFollowing, setInfosFollowing]= useState();
     
-
     const [alreadyFollow, setAlreadyFollow]= useState();
-
 
     const [displayFollowers, setDisplayFollowers]= useState(false);
     const [displayFollowing, setDisplayFollowing]= useState(false);

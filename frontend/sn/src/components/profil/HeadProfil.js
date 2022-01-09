@@ -34,28 +34,29 @@ const HeadProfil= () =>{
     return(
         <>
             {displaySettings?
-            (<div id="blocProfil">
-                {displaySettings}
-                <div id="blocPhoto">
-                    <p id="pImage">
-                        <img src={statePicture} alt="ok"/>
-                    </p>
-                    <p>pseudo: {userData.pseudo} </p>
-                    <p>contact: {userData.email} </p>
-                </div>
+                (<SettingsProfil handleProfil={handleProfil} stateSettings={displaySettings}/>)
+            :
+                (<div id="blocProfil">
+                
+                    <div id="blocPhoto">
+                        <p id="pImage">
+                            <img src={statePicture} alt="ok"/>
+                        </p>
+                        <p>pseudo: {userData.pseudo} </p>
+                        <p>contact: {userData.email} </p>
+                    </div>
 
-                <div id="blocInfosProfil">
-                    <Follow/>
+                    <div id="blocInfosProfil">
+                        <Follow/>
+                    </div>
+                    <div id="buttonSettings" onClick={handleProfil}> 
+                        <button>
+                            <i class="fas fa-cog"></i>
+                            <p>Modifier profil</p>
+                        </button> 
+                    </div>
                 </div>
-                <div id="buttonSettings" onClick={handleProfil}> 
-                    <button>
-                        <i class="fas fa-cog"></i>
-                        <p>Modifier profil</p>
-                    </button> 
-                </div>
-            </div>
-            )
-            :(<SettingsProfil handleProfil={handleProfil} stateTest={displaySettings}/>)
+                )
             }
         </>
   )
