@@ -47,24 +47,32 @@
 
 // Partie form update infos profil
 
-
-
-#blocUpdateProfil{
+.formSettings{
     margin-top: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 5%;
     row-gap: 10px;
+    position: relative;
 }
 
-#blocUpdateProfil label{
+
+
+.formSettings label{
     display: flex;
     align-items: end;
     justify-content: end;
 }
 
-#blocUpdateProfil input{
+.formSettings input{
     width:50%;
+}
+
+.formSettings i{
+    position: absolute;
+    right:16%;
+    top:5%;
+    cursor: pointer;
 }
 
 

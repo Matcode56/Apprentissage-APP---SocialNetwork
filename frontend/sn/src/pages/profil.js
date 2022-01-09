@@ -1,5 +1,5 @@
 import React from "react";
-import HeadProfil from "../components/profil/HeadProfil/HeadProfil";
+import HeadProfil from "../components/profil/HeadProfil";
 
 
 

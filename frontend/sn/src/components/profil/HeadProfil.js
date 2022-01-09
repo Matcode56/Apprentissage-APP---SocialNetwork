@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import "../../../styles/profil/_profil.scss"
-import FollowUnfollow from "./followUnfollow";
+import "../../styles/profil/_profil.scss"
+import Follow from "./Follow";
 import SettingsProfil from "./settingsProfil";
 
 
@@ -45,7 +45,7 @@ const HeadProfil= () =>{
                 </div>
 
                 <div id="blocInfosProfil">
-                    <FollowUnfollow/>
+                    <Follow/>
                 </div>
                 <div id="buttonSettings" onClick={handleProfil}> 
                     <button>

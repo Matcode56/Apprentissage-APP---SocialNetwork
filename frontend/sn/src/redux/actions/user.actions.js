@@ -3,6 +3,9 @@ import axios from "axios"
 
 export const GET_USER= "GET_USER";
 export const UPLOAD_PICTURE="UPLOAD_PICTURE";
+export const UNFOLLOW_USER="UNFOLLOW_USER"
+export const FOLLOW_USER="FOLLOW_USER"
+export const UPDATE_USER="UPDATE_USER"
 
 // Récupération des infos de l'utilisateur depuis son Token
 export const getUser= (uid)=>{
@@ -35,14 +38,45 @@ export const uploadPicture= (id, data)=>{
     }
 }
 
-/*export const getInfoFollower= (data)=>{
-    return(dispatch)=>{
-        const arrayInfoFollower=
-            data.forEach(element=> 
-                axios.get(`http://localhost:5000/api/user/infoFollow/${element}`)
-            .then((res)=>{
-            )
+export const unfollowUser= (id, idToUnfollow)=>{
+    return (dispatch)=>{
+        return axios({
+            method: "patch",
+            url: `http://localhost:5000/api/user/${id}/unfollow`,
+            data: {idToUnfollow},
+        })
+        .then((res)=>{
+            dispatch({type:UNFOLLOW_USER, payload:{idToUnfollow}})
         })
         .catch((err)=> console.log(err))
+    }
+}
+
+export const followUser= (id, idToFollow)=>{
+    return (dispatch)=>{
+        axios({
+            method: "patch",
+            url: `http://localhost:5000/api/user/${id}/follow`,
+            data: {idToFollow},
         })
-    }*/
+        .then((res)=>{
+            dispatch({type:FOLLOW_USER, payload:{idToFollow}})
+        })
+        .catch((err)=> console.log(err))
+    }
+}
+
+export const updateUser=(id, infoToChange)=>{
+    
+    return (dispatch)=>{
+        axios({
+            method: "put",
+            url: `http://localhost:5000/api/user/${id}`,
+            data: infoToChange,
+        })
+        .then((res)=>{
+            dispatch({type:UPDATE_USER, payload:infoToChange})
+        })
+        .catch((err)=> console.log(err))
+    }
+}

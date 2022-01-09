@@ -32,6 +32,7 @@ module.exports.updateUser=(req,res)=>{
             { new: true },
             (err, doc) => {
                 if (!err){ 
+                    console.log(doc)
                     res.send(doc);
                 }
         

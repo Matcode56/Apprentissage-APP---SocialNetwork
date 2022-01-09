@@ -1,68 +1,69 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { followUser, unfollowUser } from "../../redux/actions/user.actions";
 
 
 
-const FollowUnfollow=() =>{
+
+const Follow=() =>{
 
     // Récupération donnée Utilisateur sur Redux 
     const userData=  useSelector((state)=> state.userReducer)
+    const dispatch= useDispatch();
 
     // Récupération info Follower Following
-    const [numberFollowing, setNumberFollowing]= useState(0);
-    const [numberFollower, setNumberFollower]= useState(0);
-
-    const followers= userData.followers;
-    const following= userData.following;
+    const [idFollowers, setIdFollowers]= useState(userData.followers);
+    const [idFollowing, setIdFollowing]= useState(userData.following);
 
     const [infosFollowers, setInfosFollowers]= useState();
     const [infosFollowing, setInfosFollowing]= useState();
     
-    //
-    useEffect(()=>{
-        if(following) setNumberFollowing(following.length)
-        if(followers) setNumberFollower(followers.length)
-    },[following, followers])
+
+    const [alreadyFollow, setAlreadyFollow]= useState();
+
+
+    const [displayFollowers, setDisplayFollowers]= useState(false);
+    const [displayFollowing, setDisplayFollowing]= useState(false);
 
 
     useEffect(()=>{
-     
+        if(userData.followers) setIdFollowers(userData.followers)
+        if(userData.following) setIdFollowing(userData.following)
+    },[userData])
+
+    useEffect(()=>{
       const Followers=[]
       const Following=[]
-        
-        if(followers.length>0){
-          followers.forEach(element=> 
+
+        if(idFollowers){
+          idFollowers.forEach(element=> 
         
             axios.get(`http://localhost:5000/api/user/infoFollow/${element}`)
             .then((res)=>{
-                Followers.push(res.data)
-                
+                Followers.push(res.data)    
             })
             .catch((err)=> console.log(err)))
         }
 
-        if(following.length>0){
-          const test=[]
-          following.forEach(element=> 
+        if(idFollowing){
+          
+          idFollowing.forEach(element=> 
         
             axios.get(`http://localhost:5000/api/user/infoFollow/${element}`)
             .then((res)=>{
               Following.push(res.data)
             })
-            .catch((err)=> console.log(err)))
-        
-        if(Following) setInfosFollowing(Following)
-        if(followers) setInfosFollowers(Followers)
-        
-      }
-    }, [followers, following])
+            .catch((err)=> console.log(err))
+          )}
 
-      
+          if(Following) setInfosFollowing(Following)
+          if(Followers) setInfosFollowers(Followers)
+    },[idFollowers, idFollowing])
+
     //Changement d'affichage au clic sur Follower ou Following
 
-    const [displayFollowers, setDisplayFollowers]= useState(false);
-    const [displayFollowing, setDisplayFollowing]= useState(false);
+  
 
     useEffect(()=>{
       if(displayFollowing){
@@ -88,7 +89,33 @@ const FollowUnfollow=() =>{
       }
     }
 
-    //Button unfollow
+    //Savoir si l'utilisateur suit déja la personne
+  
+
+    useEffect(()=>{
+      const same=[];
+      if(idFollowers.length>0 && idFollowing.length>0){
+        idFollowers.forEach((i) =>{ 
+          if(idFollowing.includes(i)){
+            same.push(i)
+          }
+        })
+      }
+      setAlreadyFollow(same)
+    },[idFollowing, idFollowers])
+    
+
+    //Unfollow Option
+    const handleUnfollow= (id, idToUnfollow)=>{
+      dispatch(unfollowUser(id, idToUnfollow))
+    }
+
+    //Follow Option
+    const handleFollow=(id, idToFollow)=>{
+      dispatch(followUser(id, idToFollow))
+    }
+
+    console.log(infosFollowers)
 
     
 
@@ -97,12 +124,12 @@ const FollowUnfollow=() =>{
       
         <p className="numberFollow" onClick={()=>displayFollowers? setDisplayFollowers(false):setDisplayFollowers(true)}>
           Followers <br/><br/>
-          {numberFollower} 
+          {idFollowers.length} 
         </p>
 
         <p className="numberFollow" onClick={()=>displayFollowing? setDisplayFollowing(false):setDisplayFollowing(true)}>
           Following <br/><br/>
-          {numberFollowing} 
+          {idFollowing.length} 
         </p>
 
         {displayFollowers
@@ -119,7 +146,13 @@ const FollowUnfollow=() =>{
                   <div id="infoPersonFollow" key={e._id}>
                     <img src={e.picture}/>
                     <p>{e.pseudo}</p>
-                  </div>
+                  
+                    {alreadyFollow.includes(e._id)?
+                      <button onClick={()=>handleUnfollow(userData._id, e._id)}>Unfollow</button>
+                      :<button onClick={()=>handleFollow(userData._id, e._id)}>Follow</button>
+                    }
+                    
+                </div>
               )}
             </div>
           </div>)
@@ -136,13 +169,12 @@ const FollowUnfollow=() =>{
               <p className="PartFollowing" onClick={()=>handleChangeDisplayFollow()}>Following</p>
             </div>
             <div id="blocNameFollower">
-              {infosFollowing&& 
+              {
                 infosFollowing.map(e=>
                   <div id="infoPersonFollow" key={e._id}>
                     <img src={e.picture}/>
                     <p>{e.pseudo}</p>
-                    <button>Suppr</button>
-              
+                    <button onClick={()=>handleUnfollow(userData._id, e._id)}>Unfollow</button>
                   </div>
                 )}
               </div>
@@ -153,4 +185,4 @@ const FollowUnfollow=() =>{
   )
 }
 
-export default FollowUnfollow
+export default Follow

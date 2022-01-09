@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import '../../../styles/profil/_profil.scss';
-import { uploadPicture } from "../../../redux/actions/user.actions";
+import '../../styles/profil/_profil.scss';
+import { uploadPicture } from "../../redux/actions/user.actions";
 
 
 const UploadImg=() =>{

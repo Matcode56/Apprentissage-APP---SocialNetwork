@@ -80,6 +80,7 @@ module.exports.checkUpdatePsw= async (req,res, next)=>{
 
 module.exports.checkInfoToChange= async(req,res, next) =>{
     const infoUpdate=req.body;
+    console.log(infoUpdate)
     let validData= true;
     checkData();
     function checkData(){
