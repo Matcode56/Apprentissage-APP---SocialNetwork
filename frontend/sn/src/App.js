@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from "react-redux";
 import {getUser} from './redux/actions/user.actions'
 import { getAllUsers } from './redux/actions/users.actions';
+import { getPosts } from './redux/actions/post.actions';
 
 
 function App() {

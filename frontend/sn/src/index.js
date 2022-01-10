@@ -3,15 +3,20 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {Provider} from 'react-redux';
-import store from './redux/store'
+import {store, persistor} from './redux/store';
+import {PersistGate} from 'redux-persist/integration/react'
+
 
 //Ajout du Provier de Redux afin que le store soit accessible dans l'ensemble de l'application
 ReactDOM.render(
   <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
   <React.StrictMode>
     <App />
   </React.StrictMode>
+    </PersistGate>
   </Provider>,
+
   document.getElementById('root')
 );
 

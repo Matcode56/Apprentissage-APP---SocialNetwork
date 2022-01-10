@@ -6,7 +6,6 @@ export const getAllUsers= ()=>{
     return(dispatch)=>{
         axios.get(`http://localhost:5000/api/user`)
         .then((res)=>{
-            console.log(res)
             dispatch({type: GET_ALL_USERS, payload: res.data})
         })
         .catch((err)=> console.log((err)))
