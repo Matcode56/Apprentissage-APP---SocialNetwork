@@ -39,8 +39,8 @@ export const uploadPicture= (id, data)=>{
 }
 
 export const unfollowUser= (id, idToUnfollow)=>{
-    return (dispatch)=>{
-        return axios({
+        return (dispatch)=>{
+            axios({
             method: "patch",
             url: `http://localhost:5000/api/user/${id}/unfollow`,
             data: {idToUnfollow},

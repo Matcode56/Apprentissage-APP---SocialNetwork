@@ -3,9 +3,14 @@ import { applyMiddleware, createStore } from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension'
 import { combineReducers } from "redux";
 import userReducer from './reducers/user.reducers';
+import postReducer from './reducers/post.reducers';
+import usersReducer from './reducers/users.reducer';
 
 const rootReducer= combineReducers({
-    userReducer
+    userReducer,
+    usersReducer,
+    postReducer
+    
 })
 
 

@@ -28,8 +28,6 @@ const HeadProfil= () =>{
         }
     }, [userData, statePicture])
 
-    
-    
 
     return(
         <>

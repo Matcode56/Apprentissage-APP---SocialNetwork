@@ -15,6 +15,8 @@ export default function userReducer(state= initialState, action){
             }
         
             case UNFOLLOW_USER:
+                console.log(action.payload.idToUnfollow)
+                console.log(state.following)
                 return{
                     ...state, 
                     following: state.following.filter(

@@ -6,6 +6,7 @@ import axios from "axios"
 import { useDispatch } from 'react-redux';
 import { useSelector } from "react-redux";
 import {getUser} from './redux/actions/user.actions'
+import { getAllUsers } from './redux/actions/users.actions';
 
 
 function App() {
@@ -28,12 +29,12 @@ function App() {
       else{
       setUid(res.data)
       }
-
     })
     .catch((err)=> console.log(err))
-    // eécupération des infos utilisateur depuis son token et envoie des infos dans le store Redux
+    // Récupération des infos utilisateur depuis son token et envoie des infos dans le store Redux
     if(uid){
       dispatch(getUser(uid))
+      dispatch(getAllUsers())
     }
   }, [uid])
 

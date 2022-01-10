@@ -7,7 +7,7 @@ const bcrypt= require('bcrypt');
 
 
 module.exports.getAllUsers= async(req,res)=>{
-    const users= await User.find().select(['pseudo', 'email', 'followers', 'following', 'likes']);
+    const users= await User.find().select(['pseudo', 'email', 'followers', 'following', 'likes','picture']);
     if(users)res.status(200).json(users);
     else res.status(400).send('erreur')
 }
