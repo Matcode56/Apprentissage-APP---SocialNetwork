@@ -162,13 +162,29 @@
 }
 
 #infoPersonFollow button{
-    margin-left: 10%;
     position: absolute;
     right:3%;
     top:30%;
-    padding: 0.6em;
+}
+
+.btnUnfollow{
+    
+    height: 40px;
+    padding-left: 3em;
+    padding-right: 3em;
     border: none;
     background: #b8536a;
     color:white;
-    border-radius: 25%;
+    border-radius: 1.5rem;
+
+}
+
+.btnFollow{
+    height: 40px;
+    padding-left: 3em;
+    padding-right: 3em;
+    border: none;
+    background: #74ba66;
+    color:white;
+    border-radius: 1.5rem;
 }

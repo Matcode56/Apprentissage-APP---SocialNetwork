@@ -6,7 +6,7 @@ const fs = require('fs');
 
 
 module.exports.readPost= (req,res)=>{
-    console.log('im here')
+  
     Post.find((err, docs)=>{
         if(!err){
             res.status(200).json(docs)

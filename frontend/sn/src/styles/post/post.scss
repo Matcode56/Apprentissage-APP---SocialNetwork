@@ -1,0 +1,91 @@
+.blocComment{
+    margin-left: 5%;
+    margin-right: 5%;
+
+}
+.commentCard{
+    margin-top: 40px;
+    border: 1px solid grey;
+    border-radius: 1em;
+    padding:1%;
+    margin-bottom: 15px;
+}
+
+.cardHeader{
+    height:70px;
+    display: flex;
+    position: relative;
+    padding-bottom: 20px;
+    align-items: center;
+}
+
+.cardHeader img{
+    height: 100%;
+    width: 70px;
+    border-radius:100%;
+}
+
+.cardHeader h3{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 15px;
+}
+
+.cardHeader p{
+    position: absolute;
+    right:3%;
+    top:35%;
+}
+
+.btnUnfollow{
+    height: 40px;
+    padding-left: 3em;
+    padding-right: 3em;
+    margin-left: 3%;
+    border: none;
+    background: #b8536a;
+    color:white;
+    border-radius: 1.5rem;
+
+}
+
+.btnFollow{
+    height: 40px;
+    padding-left: 3em;
+    padding-right: 3em;
+    margin-left: 3%;
+    border: none;
+    background: #74ba66;
+    color:white;
+    border-radius: 1.5rem;
+}
+
+.cardMessage{
+    border: solid 1px grey;
+    height: 45%;
+    padding: 10px;
+    border-radius: 1em;
+}
+
+.activeLike{
+    display: flex;
+    margin-left: 1%;
+    color: #4287f5;
+    margin-bottom: 10px;
+}
+
+.activeLike p{
+    color: #4287f5;
+    margin-left:0.5%;
+}
+
+.disabledLike{
+    display: flex;
+    margin-left: 1%;
+    margin-bottom: 10px;
+}
+
+.disabledLike p{
+    margin-left:0.5%;
+}

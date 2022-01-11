@@ -12,7 +12,7 @@ const Follow=() =>{
     // Récupération donnée Utilisateur sur Redux 
     const userData=  useSelector((state)=> state.userReducer)
     const usersData= useSelector((state)=> state.usersReducer)
-    const dispatch= useDispatch();
+    
 
     const [displayFollowers, setDisplayFollowers]= useState(false);
     const [displayFollowing, setDisplayFollowing]= useState(false);
@@ -98,7 +98,7 @@ const Follow=() =>{
                 usersData.map((user)=>{
 
                   for(let i=0; i<userData.following.length; i++){
-                    if(user._id === userData.followers[i]){
+                    if(user._id === userData.following[i]){
                       return(
                       <div id="infoPersonFollow" key={user._id}>
                         <img src={user.picture}/>

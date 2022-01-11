@@ -22,7 +22,6 @@ function App() {
       withCredentials: true,
     })
     .then((res)=>{ 
-      console.log(res)
       const token= res.data;
       if(token.includes("no token")){
         setUid(false)
@@ -44,7 +43,7 @@ function App() {
 
   return (
     <>
-      <UidContext.Provider value={uid}>
+      <UidContext.Provider value={uid}>s
         <RouterReact/>
       </UidContext.Provider>
     </>

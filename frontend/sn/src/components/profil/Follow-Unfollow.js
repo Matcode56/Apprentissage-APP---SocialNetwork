@@ -16,6 +16,7 @@ const FollowHandler=({idToUnfollowFollow}) =>{
         else setAlreadyFollow(false)
     }, [userData])
     
+    console.log(userData.following)
     
 
     const id= userData._id;
@@ -33,8 +34,8 @@ const FollowHandler=({idToUnfollowFollow}) =>{
       <>
      {
       alreadyFollow?
-      (<button onClick={()=>handleUnfollow(idToUnfollowFollow)}>Unfollow</button>)
-      :(<button onClick={()=>handleFollow(idToUnfollowFollow)}>Follow</button>)
+      (<button className="btnUnfollow" onClick={()=>handleUnfollow(idToUnfollowFollow)}>Unfollow</button>)
+      :(<button className="btnFollow" onClick={()=>handleFollow(idToUnfollowFollow)}>Follow</button>)
      }
    
       </>
