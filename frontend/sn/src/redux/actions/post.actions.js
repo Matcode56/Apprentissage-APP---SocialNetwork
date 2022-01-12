@@ -20,11 +20,26 @@ export const likePost= (postId, userId)=>{
     return(dispatch)=>{
         return axios({
             method: "patch",
-            url: `http://localhost:5000/api/post/${postId}`,
-            data:{id: userId}
+            url: `http://localhost:5000/api/post/likePost/${postId}`,
+            data:{"userId": userId}
         })
         .then((res)=>{
+            console.log(res)
             dispatch({type:LIKE_POST, payload:{postId, userId}})
+        })
+        .catch((err)=> console.log(err))
+    }
+}
+
+export const unlikePost= (postId, userId)=>{
+    return(dispatch)=>{
+        return axios({
+            method: "patch",
+            url: `http://localhost:5000/api/post/unlikePost/${postId}`,
+            data:{"userId": userId}
+        })
+        .then((res)=>{
+            dispatch({type:UNLIKE_POST, payload:{postId, userId}})
         })
         .catch((err)=> console.log(err))
     }

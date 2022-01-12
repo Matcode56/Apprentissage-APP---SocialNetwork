@@ -40,9 +40,10 @@ module.exports.checkPostId= (req, res, next)=>{
 
 module.exports.checkIdUser= (req, res, next)=>{
     const idToCheck=req.body.userId;
+    console.log(req.body)
     User.findById(idToCheck, function(err, docs){
         if(err || !docs){
-            res.send('erreur id User');
+            res.status(400).send('erreur id User');
         }
         else next();
     })

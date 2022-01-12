@@ -43,7 +43,7 @@ function App() {
 
   return (
     <>
-      <UidContext.Provider value={uid}>s
+      <UidContext.Provider value={uid}>
         <RouterReact/>
       </UidContext.Provider>
     </>

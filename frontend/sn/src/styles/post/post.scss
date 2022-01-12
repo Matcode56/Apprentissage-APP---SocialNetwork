@@ -9,6 +9,7 @@
     border-radius: 1em;
     padding:1%;
     margin-bottom: 15px;
+   
 }
 
 .cardHeader{
@@ -62,10 +63,12 @@
 }
 
 .cardMessage{
-    border: solid 1px grey;
-    height: 45%;
-    padding: 10px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left:10px;
+    padding-right: 10px;
     border-radius: 1em;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .activeLike{
@@ -81,6 +84,7 @@
 }
 
 .disabledLike{
+    cursor: pointer;
     display: flex;
     margin-left: 1%;
     margin-bottom: 10px;
@@ -88,4 +92,9 @@
 
 .disabledLike p{
     margin-left:0.5%;
+}
+
+#numberLikes{
+    margin-right: 0.3%;
+    margin-left: 0px;
 }

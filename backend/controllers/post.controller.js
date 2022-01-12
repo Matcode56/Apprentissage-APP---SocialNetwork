@@ -91,7 +91,7 @@ module.exports.likePost= async(req,res,)=>{
             {new: true},
             (err, docs)=>{
                 if(err) return res.status(400).send(err)
-                else console.log('Post changed')
+                else console.log('validé')
             }
         )
         User.findByIdAndUpdate(
