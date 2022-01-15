@@ -4,11 +4,11 @@ const User= require('../models/user.models');
 fs= require('fs');
 
 module.exports.checkPosterId= async(req,res,next)=>{
-    console.log(req.body.posterId)
+    
     const idToCheck= req.body.posterId;
+    console.log(req.body)
     User.findById(idToCheck, function(err, docs){
         if(docs){
-            console.log('ok')
             next();
         }
         
@@ -40,7 +40,6 @@ module.exports.checkPostId= (req, res, next)=>{
 
 module.exports.checkIdUser= (req, res, next)=>{
     const idToCheck=req.body.userId;
-    console.log(req.body)
     User.findById(idToCheck, function(err, docs){
         if(err || !docs){
             res.status(400).send('erreur id User');

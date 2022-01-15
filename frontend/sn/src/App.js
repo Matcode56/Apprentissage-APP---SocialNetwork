@@ -35,6 +35,7 @@ function App() {
     if(uid){
       dispatch(getUser(uid))
       dispatch(getAllUsers())
+      dispatch(getPosts())
     }
   }, [uid])
 

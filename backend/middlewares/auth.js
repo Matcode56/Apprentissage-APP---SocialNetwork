@@ -12,13 +12,12 @@ module.exports.checkUser=(req,res, next)=>{
       jwt.verify(token, process.env.TOKEN_SECRET, async(err, decodedToken)=>{
           if(err){
               res.cookie('jwt', '', {maxAge:1})
-              console.log(user._id)
+              
               next();
           }
           else{
               console.log(decodedToken)
               let user= await UserModel.findById(decodedToken.userId);
-              console.log(user._id)
               res.locals.user= user
               next();
           }

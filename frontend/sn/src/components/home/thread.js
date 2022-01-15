@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPosts } from "../../redux/actions/post.actions";
+import { getUser } from "../../redux/actions/user.actions";
 import userReducer from "../../redux/reducers/user.reducers";
 import Card from "./posts/Card";
 
@@ -16,14 +17,29 @@ const Thread=() =>{
 
   useEffect(()=>{
         dispatch(getPosts());
+
   }, [userData])
   if(posts)console.log(posts)
+
+
+  //console.log("usersData")
+    //console.log(usersData)
+  console.log("userData")
+  console.log(userData)
   console.log(posts)
+
+  const handleRefreshPost= ()=>{
+    dispatch(getPosts())
+  }
 
   return(
       <>
-        <div className="blocComment">
-          {posts[0] && 
+        <div id="blocPost">
+          <div className="refreshPost" onClick={()=> handleRefreshPost()}>
+            <i class="fas fa-redo-alt"></i>
+            <p>Refresh</p>
+          </div>
+          {posts[0]&&  
             posts.map((post)=>{
               return <Card post={post} key={post._id}/>
             })

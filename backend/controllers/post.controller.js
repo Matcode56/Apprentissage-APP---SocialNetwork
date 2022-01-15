@@ -17,7 +17,7 @@ module.exports.readPost= (req,res)=>{
 
 module.exports.createPost= async (req,res)=>{
 
-    let namePostImage= getNameImagePost();
+    /*let namePostImage= getNameImagePost();
     console.log(req.file)
 
     function getNameImagePost(){
@@ -36,13 +36,14 @@ module.exports.createPost= async (req,res)=>{
         else{
             return false;
         }
-    }
+    }*/
 
     try{
+        console.log(req.body)
         const post= await Post.create({
             posterId: req.body.posterId,
             message: req.body.message,
-            picture: req.file ? "../../frontend/sn/public/upload/PhotoProfil"+namePostImage : "",
+            picture: req.file ? `/upload/PhotoPost/${req.file.filename}` : "",
             likers:[],
             comments:[]
         });

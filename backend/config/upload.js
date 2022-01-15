@@ -10,13 +10,13 @@ const multer= require('multer');
                 cb(null,`${__dirname}/../../frontend/sn/public/upload/PhotoProfil`)
             }
             if(file.fieldname === 'postImage'){
-                cb(null,`${__dirname}/../../frontend/sn/public/upload/PhotoProfil`)
+                cb(null,`${__dirname}/../../frontend/sn/public/upload/PhotoPost`)
             }
         }, 
         filename: (req, file, cb)=>{
             
             let mimetype= file.mimetype;
-            console.log(mimetype)
+            
             let suffix= mimetype.replace('image/', '')
             
             if(file.fieldname === 'profilPhoto'){
@@ -30,7 +30,7 @@ const multer= require('multer');
     }) 
     
     const upload = multer({storage: storage, fileFilter: (req, file, cb)=> {
-       
+        
          if(
              file.mimetype !== "image/jpg" 
          &&  file.mimetype !== "image/png" 

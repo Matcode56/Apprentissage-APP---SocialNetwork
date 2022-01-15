@@ -12,8 +12,10 @@ const FollowHandler=({idToUnfollowFollow}) =>{
 
 
     useEffect(()=>{
+      if(userData[0]){
         if(userData.following.includes(idToUnfollowFollow)) setAlreadyFollow(true);
         else setAlreadyFollow(false)
+      }
     }, [userData])
     
     console.log(userData.following)

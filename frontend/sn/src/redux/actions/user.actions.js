@@ -12,6 +12,8 @@ export const getUser= (uid)=>{
     return (dispatch)=>{
         axios.get(`http://localhost:5000/api/user/${uid}`)
         .then((res)=>{
+            console.log('reponse userAction')
+            console.log(res.data)
             dispatch({type: GET_USER, payload: res.data})
         })
         .catch((err)=> console.log(err))

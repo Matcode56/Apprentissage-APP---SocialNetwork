@@ -3,11 +3,13 @@ import { useSelector } from "react-redux";
 import '../../../styles/post/post.scss'
 import FollowHandler from "../../profil/Follow-Unfollow";
 import LikeUnlike from "./LikeUnlike";
+import SettingsPost from "./SettingsPost"
 
 const Card=({post, key}) =>{
 
     const usersData= useSelector((state)=> state.usersReducer);
     const userData= useSelector((state)=> state.userReducer);
+
     
     //Modif date
     function transformDate(date){
@@ -32,16 +34,20 @@ const Card=({post, key}) =>{
   return(
       <>
 
-        <div className="commentCard" key={key}> 
+        <div className="postCard" key={key}> 
             {
-            usersData.map((e)=>{
+            usersData[0] && usersData.map((e)=>{
                 if(e._id === post.posterId){
                     if(post.posterId === userData._id){
                         return(
                             <div className="cardHeader">
                                 <img src={e.picture}/>
-                                <h3>{e.pseudo}</h3>
-                                <p>{transformDate(post.createdAt)}</p>
+                                <div className="divPseudoData">
+                                    <h3>{e.pseudo}</h3>
+                                    <p>{transformDate(post.createdAt)}</p>
+                                </div>
+                                
+                                <SettingsPost isPoster={true} idPost={post._id}/>
                             </div>
                         )
                     }
@@ -49,19 +55,32 @@ const Card=({post, key}) =>{
                         return  (
                             <div className="cardHeader">
                                 <img src={e.picture}/>
-                                <h3>{e.pseudo}</h3>
+                                <div className="divPseudoData">
+                                    <h3>{e.pseudo}</h3>
+                                    <p>{transformDate(post.createdAt)}</p>
+                                </div>
                                 <FollowHandler idToUnfollowFollow={post.posterId}/>
-                                <p>{transformDate(post.createdAt)}</p>
+                                <SettingsPost isPoster={false} idPost={post._id}/>
                             </div>
                             )
                     }
-                   
                 }
             })
         }
-            <LikeUnlike post={post} likes={userData.likes}/>
+        {
+            userData[0]&&
+              <LikeUnlike post={post} likes={userData.likes}/>
+        }
+                  
             <div className="cardMessage">
-                {post.message}
+                <p>{post.message}</p>
+                {post.picture&& 
+                (   
+                <p id="bloc_image">
+                    <img src={post.picture}/>
+                </p>
+                )}
+                
             </div>
         </div>
 

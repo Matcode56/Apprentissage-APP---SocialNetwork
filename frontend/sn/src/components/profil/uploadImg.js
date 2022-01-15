@@ -23,6 +23,7 @@ const UploadImg=() =>{
         const id= userData._id
         dispatch(uploadPicture(id, formData))
         setImageUpdate(false);
+        console.log(formData)
     }
 
 

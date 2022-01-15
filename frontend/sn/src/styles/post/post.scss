@@ -1,14 +1,72 @@
-.blocComment{
-    margin-left: 5%;
-    margin-right: 5%;
-
+// Bloc CREATION Post
+.blocNewPost{
+    width: 70%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom:30px;
+    border: 1px solid grey;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    padding: 2em;
 }
-.commentCard{
+
+.blocNewPost textarea{
+    width:95%;
+    margin-top: 15px;
+    height: 100px;
+    border-radius: 1rem;
+    padding: 1.5%;
+    margin-bottom: 20px; 
+}
+.blocNewPost input{
+    margin-top: 15px;
+}
+
+#submitPost{
+    margin-top: 15px;
+    padding-left: 3em;
+    padding-right: 3em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border-radius: 3rem;
+    border: none;
+    background: #56b2e8;
+    color: white;
+    font-weight: bold;
+}
+
+//Refresh
+
+.refreshPost{
+    display: flex;
+    border: 1px grey solid;
+    width: 120px;
+    margin: auto;
+    padding: 1em;
+    border-radius: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+.refreshPost i{
+    margin-right: 10px;
+}
+
+//CardPost
+
+.postCard{
     margin-top: 40px;
     border: 1px solid grey;
     border-radius: 1em;
     padding:1%;
-    margin-bottom: 15px;
+    width: 50%;
+    margin: auto;
+    margin-bottom: 30px;
    
 }
 
@@ -20,25 +78,78 @@
     align-items: center;
 }
 
+
 .cardHeader img{
     height: 100%;
     width: 70px;
     border-radius:100%;
 }
 
-.cardHeader h3{
+.divPseudoData{
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
     padding-left: 15px;
 }
 
-.cardHeader p{
+// SETTINGS POST
+
+.blocSettingsPost{
+    width:10%;
     position: absolute;
-    right:3%;
-    top:35%;
+    right:1%;
 }
 
+.buttonSettingsPost{
+    width:100%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.listSettingsPost p{
+    border: 1px solid black;
+    padding:5%;
+}
+
+.listSettingsPost p:first-child{
+    border-top-left-radius: 0.6em;
+    border-top-right-radius: 0.6em;
+}
+
+.listSettingsPost p:last-child{
+    border-bottom-left-radius: 0.6em;
+    border-bottom-right-radius: 0.6em;
+}
+
+.popDeletePost{
+    position: fixed;
+    width:30%;
+    top: 35%;
+    left:35%;
+    right: 50%;
+    padding: 1em;
+    border-radius: 1rem;
+    background: whitesmoke;
+}
+
+.popDeletePost h3{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.choiceDeletePost p{
+    border-radius: 0.6em;
+    text-align: center;
+    
+}
+.choiceDeletePost p:first-child{
+    background: #944131;
+    margin-bottom: 10px;
+    color: whitesmoke;
+}
+
+
+
+// BTN FOLLOW UNFOLLOW
 .btnUnfollow{
     height: 40px;
     padding-left: 3em;
@@ -61,6 +172,7 @@
     color:white;
     border-radius: 1.5rem;
 }
+
 
 .cardMessage{
     padding-top: 25px;
@@ -98,3 +210,24 @@
     margin-right: 0.3%;
     margin-left: 0px;
 }
+
+#bloc_image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+}
+.cardMessage img{
+    max-width: 100%;
+}
+
+.errorNewPost{
+    margin-top: 15px;
+    margin-bottom: 10px;
+    background: #cf5773;
+    padding: 1em;
+    color: white;
+    border-radius: 1rem;
+}
+
+
