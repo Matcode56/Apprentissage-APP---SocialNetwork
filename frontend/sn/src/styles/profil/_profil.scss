@@ -12,6 +12,25 @@
 
 }
 
+@media (max-width:623px) {
+    #blocProfil{
+        display:flex;
+        flex-direction: column;
+    }
+
+    #blocPhoto{
+        border-right: none;
+        margin-bottom: 40px;
+    }
+
+  
+
+    #blocInfosProfil{
+        margin: auto;
+    }
+
+}
+
 #buttonSettings{
     position: absolute;
     right:2%;
@@ -39,6 +58,7 @@
     justify-content: center;
     flex-direction: column;
     border-right: 2px solid black;
+    min-width: 225px;
    
 
 }
@@ -50,13 +70,6 @@
     margin-bottom: 20px;
 }
 
-#buttonPhotoProfil{
-    border-radius: 1rem;
-    border: solid transparent 0px;
-    font-weight: bold;
-    padding: 0.5rem;
-    margin-bottom: 20px;
-}
 
 #pImage img{
     width:100%;
@@ -73,6 +86,19 @@
     align-items: center;
     justify-content: flex-start;
 }
+
+@media (max-width: 700px) {
+    #blocInfosProfil{
+        display: block;
+    }
+
+    .numberFollow{
+        max-width:100px;
+        margin-bottom: 10px;
+    }
+
+}
+
 
 .followFollowing{
     display: flex;
@@ -92,14 +118,22 @@
 
 .displayPartFollow{
     position: fixed;
-    left:30%;
-    right:30%;
-    top: 70px;
-    bottom: 60px;
+    width: 65%;
+    top:25%;
+    left:20%;
+    margin: auto;
     background: white;
     border: solid 1px grey;
     border-radius: 1rem;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    z-index: 1;
+}
+
+@media (max-width:750px) {
+    .displayPartFollow{
+        width:80%;
+        left:10%;
+    }
 }
 
 #buttonBack{
@@ -167,11 +201,11 @@
     top:30%;
 }
 
-.btnUnfollow{
+.btnUnfollowProfil{
     
-    height: 40px;
-    padding-left: 3em;
-    padding-right: 3em;
+    height: 32px;
+    padding-left: 2.5em;
+    padding-right: 2.5em;
     border: none;
     background: #b8536a;
     color:white;
@@ -179,10 +213,10 @@
 
 }
 
-.btnFollow{
-    height: 40px;
-    padding-left: 3em;
-    padding-right: 3em;
+.btnFollowProfil{
+    height: 32px;
+    padding-left: 2.5em;
+    padding-right: 2.5em;
     border: none;
     background: #74ba66;
     color:white;

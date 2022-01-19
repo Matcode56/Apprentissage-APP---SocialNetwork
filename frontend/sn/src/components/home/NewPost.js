@@ -12,7 +12,6 @@ const NewPost=() =>{
   const userData= useSelector((state)=> state.userReducer);
   const dispatch= useDispatch()
 
-  console.log(inputText.length)
   
   useEffect(()=>{   
     if(inputImg){

@@ -4,7 +4,6 @@ import RouterReact from './routes/routes';
 import './styles/general.scss'
 import axios from "axios"
 import { useDispatch } from 'react-redux';
-import { useSelector } from "react-redux";
 import {getUser} from './redux/actions/user.actions'
 import { getAllUsers } from './redux/actions/users.actions';
 import { getPosts } from './redux/actions/post.actions';

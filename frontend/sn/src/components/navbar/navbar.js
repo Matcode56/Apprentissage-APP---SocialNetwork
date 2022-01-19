@@ -6,7 +6,6 @@ import { UidContext } from "../context/context";
 
 const Nav=() =>{
   const uid= useContext(UidContext);
-  console.log(uid)
 
 
   return(

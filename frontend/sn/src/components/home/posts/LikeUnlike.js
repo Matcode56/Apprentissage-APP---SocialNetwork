@@ -6,8 +6,7 @@ const LikeUnlike=({post, likes}) =>{
 
     const userData= useSelector((state)=> state.userReducer);
     const dispatch= useDispatch();
-    
-    console.log(post, likes)
+
     const [numberLike, setNumberLike]= useState()
     const [alreadyLike, setAlreadyLike]= useState(false);
 

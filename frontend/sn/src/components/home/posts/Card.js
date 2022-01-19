@@ -41,7 +41,7 @@ const Card=({post, key}) =>{
                     if(post.posterId === userData._id){
                         return(
                             <div className="cardHeader">
-                                <img src={e.picture}/>
+                                <img alt="imageUserPost" src={e.picture} id="photoUserPost"/>
                                 <div className="divPseudoData">
                                     <h3>{e.pseudo}</h3>
                                     <p>{transformDate(post.createdAt)}</p>
@@ -54,12 +54,12 @@ const Card=({post, key}) =>{
                     else{
                         return  (
                             <div className="cardHeader">
-                                <img src={e.picture}/>
+                                <img alt="imageUserPost" src={e.picture} id="photoUserPost"/>
                                 <div className="divPseudoData">
                                     <h3>{e.pseudo}</h3>
                                     <p>{transformDate(post.createdAt)}</p>
                                 </div>
-                                <FollowHandler idToUnfollowFollow={post.posterId}/>
+                                <FollowHandler idToUnfollowFollow={post.posterId} type={"btnForPost"}/>
                                 <SettingsPost isPoster={false} idPost={post._id}/>
                             </div>
                             )

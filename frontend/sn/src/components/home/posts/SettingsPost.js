@@ -1,22 +1,27 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { deletePost, getPosts } from "../../../redux/actions/post.actions";
+import UpdatePost from "./UpdatePost";
 
 const SettingsPost=({isPoster, idPost}) =>{
 
     const dispatch= useDispatch();
-    console.log(isPoster)
+
     const [popSettings, setPopSettings]= useState(false);
-    const [popDelete, setPopDelete]= useState(false)
+    const [popDelete, setPopDelete]= useState(false);
 
     const handlePopSettings= () =>{
         if(popSettings)setPopSettings(false);
         if (!popSettings)setPopSettings(true)
     }
 
-    async function handleDeletePost(){
-        await dispatch(deletePost(idPost));
-        dispatch(getPosts())
+    function handleDeletePost(){
+      dispatch(deletePost(idPost));
+   
+    }
+
+    const hideSettingsPost=()=>{
+        setPopSettings(false)
     }
     
 
@@ -38,7 +43,7 @@ const SettingsPost=({isPoster, idPost}) =>{
                             </div>
                         </div>
                     )}
-                    <p>Update</p>
+                    <UpdatePost postId={idPost} hideSettingsPop={hideSettingsPost}/>
                 </>
                 )
                 :(

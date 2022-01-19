@@ -19,14 +19,7 @@ const Thread=() =>{
         dispatch(getPosts());
 
   }, [userData])
-  if(posts)console.log(posts)
-
-
-  //console.log("usersData")
-    //console.log(usersData)
-  console.log("userData")
-  console.log(userData)
-  console.log(posts)
+ 
 
   const handleRefreshPost= ()=>{
     dispatch(getPosts())

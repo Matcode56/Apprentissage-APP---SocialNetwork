@@ -11,6 +11,21 @@
     border: 1px solid grey;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     padding: 2em;
+    border-radius: 1em;
+}
+
+@media (max-width:1060px) {
+    .blocNewPost{
+        width:85%;
+    }
+}
+
+@media (max-width:650px) {
+    .blocNewPost{
+        width:90%;
+        padding-right: 0.7em;
+        padding-left: 0.7em;
+    }
 }
 
 .blocNewPost textarea{
@@ -58,7 +73,12 @@
 }
 
 //CardPost
-
+/*
+body[0].style.zIndex=-1;
+            for(let i=0 ; i< body.length ; i++){
+                body[i].style.zIndex= -1
+            }
+*/
 .postCard{
     margin-top: 40px;
     border: 1px solid grey;
@@ -70,12 +90,25 @@
    
 }
 
+@media (max-width:1260px) {
+    .postCard{
+        width:75%;
+    }
+}
+
+@media (max-width:630px) {
+    .postCard{
+        width:90%;
+    }
+}
+
 .cardHeader{
     height:70px;
     display: flex;
     position: relative;
     padding-bottom: 20px;
     align-items: center;
+ 
 }
 
 
@@ -97,6 +130,18 @@
     width:10%;
     position: absolute;
     right:1%;
+}
+
+@media (max-width:860px){
+    .blocSettingsPost{
+        width:13%;
+    }
+}
+
+@media (max-width:515px){
+    .blocSettingsPost{
+        width:20%;
+    }
 }
 
 .buttonSettingsPost{
@@ -129,8 +174,16 @@
     padding: 1em;
     border-radius: 1rem;
     background: whitesmoke;
+    z-index: 1;
 }
 
+@media (max-width: 750px) {
+    .popDeletePost{
+        width:65%;
+        top: 30%;
+        left:16%
+    }
+}
 .popDeletePost h3{
     text-align: center;
     margin-bottom: 10px;
@@ -147,32 +200,109 @@
     color: whitesmoke;
 }
 
+.popUpdatePost{
+    position: fixed;
+    width:50%;
+    top: 35%;
+    left:24%;
+    padding: 1em;
+    border-radius: 1rem;
+    background: whitesmoke;
+    z-index: 1;
 
+    
+}
 
+@media (max-width: 750px) {
+    .popUpdatePost{
+        width:75%;
+        left:9%;
+    }
+}
+.popUpdatePost textarea{
+    width:95%;
+    margin-top: 15px;
+    height: 100px;
+    border-radius: 1rem;
+    padding: 1.5%;
+    margin-bottom: 20px; 
+    background: white;
+}
+
+.buttonUpdatePost{
+    display:flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.buttonUpdatePost div{
+    cursor: pointer;
+}
+
+.buttonUpdatePost div:last-child{
+    width:70px;
+    padding:0.5em;
+    background:#47cfed;
+    text-align: center;
+    border-radius: 1em;
+    color: white;
+    margin-left: 2%;
+}
+
+.errorUpdatePost{
+    background: #cf5773;
+    color: white;
+    border-radius: 1rem;
+    width: auto;
+    margin-bottom: 15px;
+}
 // BTN FOLLOW UNFOLLOW
-.btnUnfollow{
-    height: 40px;
-    padding-left: 3em;
-    padding-right: 3em;
-    margin-left: 3%;
+.btnUnfollowPost{
+    margin-left: 2.5%;
     border: none;
     background: #b8536a;
     color:white;
     border-radius: 1.5rem;
+    padding-top:0.6em ;
+    padding-bottom: 0.6em;
+    padding-right: 1.2em;
+    padding-left: 1.2em
 
 }
 
-.btnFollow{
-    height: 40px;
-    padding-left: 3em;
-    padding-right: 3em;
-    margin-left: 3%;
+.btnFollowPost{
+    margin-left: 2.5%;
     border: none;
     background: #74ba66;
     color:white;
     border-radius: 1.5rem;
+    padding-top:0.6em ;
+    padding-bottom: 0.6em;
+    padding-right: 1.2em;
+    padding-left: 1.2em
 }
 
+@media (max-width:630px) {
+    .cardHeader{
+        height:100px;
+    }
+    #photoUserPost{
+        max-height:70px;
+        width: 70px;
+        border-radius:100%;
+    }
+    .btnFollowPost{
+        position:absolute;
+        bottom: 10px;
+        left:70px;
+    }
+
+    .btnUnfollowPost{
+        position:absolute;
+        bottom: 10px;
+        left:70px;
+    }
+}
 
 .cardMessage{
     padding-top: 25px;
@@ -229,5 +359,4 @@
     color: white;
     border-radius: 1rem;
 }
-
 

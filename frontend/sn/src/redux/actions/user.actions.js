@@ -1,4 +1,5 @@
 import axios from "axios"
+import { DELETE_POST } from "./post.actions";
 
 
 export const GET_USER= "GET_USER";
@@ -7,13 +8,12 @@ export const UNFOLLOW_USER="UNFOLLOW_USER"
 export const FOLLOW_USER="FOLLOW_USER"
 export const UPDATE_USER="UPDATE_USER"
 
+
 // Récupération des infos de l'utilisateur depuis son Token
 export const getUser= (uid)=>{
     return (dispatch)=>{
         axios.get(`http://localhost:5000/api/user/${uid}`)
         .then((res)=>{
-            console.log('reponse userAction')
-            console.log(res.data)
             dispatch({type: GET_USER, payload: res.data})
         })
         .catch((err)=> console.log(err))
@@ -82,3 +82,5 @@ export const updateUser=(id, infoToChange)=>{
         .catch((err)=> console.log(err))
     }
 }
+
+

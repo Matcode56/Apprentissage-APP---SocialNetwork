@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import '../../styles/login/_login.scss';
 import axios from "axios";
 
@@ -8,8 +8,6 @@ const Login=() =>{
 
   const [errorEmail, setErrorEmail]= useState(false);
   const [errorPassword, setErrorPassword]= useState(false);
-  /*const errorEmail= (<p className="errorLogin">Email incorrect</p>)
-  const errorPassword= (<p className="errorLogin">Mot de passe incorrect</p>)*/
 
   const handleLogin= async (e)=>{
     e.preventDefault();
@@ -30,14 +28,12 @@ const Login=() =>{
         
         if(messageError.includes('email')){
           errorPassword&& setErrorPassword(false)
-          console.log(messageError)
     
           setErrorEmail(true)
         }
         if(messageError.includes('mot de passe')){
           errorEmail&& setErrorEmail(false)
           setErrorPassword(true)
-          console.log(messageError)
         }
       })
   }

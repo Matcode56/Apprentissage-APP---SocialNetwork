@@ -28,6 +28,7 @@ module.exports.checkPosterId= async(req,res,next)=>{
 }
 
 module.exports.checkPostId= (req, res, next)=>{
+
     const idToCheck= req.params.id;
     Post.findById(idToCheck, function(err, docs){
         if(err || !docs){

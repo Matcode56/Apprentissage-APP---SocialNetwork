@@ -19,17 +19,19 @@ module.exports.profilPhoto= (req,res,next)=>{
             }
             
         const photoUser= arrFichier.filter(e=> e.includes(req.params.id))
-
+   q
         if(photoUser.length>1){
 
             const datesPhotos= photoUser.map(e=> e.substring(0, e.indexOf('-User')))
+
             
             const datesNumber= datesPhotos.map(e=> parseInt(e))
 
             const NumberToKeepSafe= datesNumber.filter(e => e==Math.max(...datesNumber))
+            console.log("NumberToKeepSafe")
+            console.log(NumberToKeepSafe)
 
-            const arrPhotoToDelete= arrFichier.filter(e=> e.substring(0, e.indexOf('-User'))!==NumberToKeepSafe.toString())
-
+            const arrPhotoToDelete= photoUser.filter(e=> e.substring(0, e.indexOf('-User'))!==NumberToKeepSafe.toString())
 
             try{
                 
@@ -37,7 +39,7 @@ module.exports.profilPhoto= (req,res,next)=>{
                 const nameAllPhoto= fs.readdirSync(__dirname+'/../../frontend/sn/public/upload/PhotoProfil');
                 const nameNewPhoto= nameAllPhoto.filter(e=> e.includes(req.params.id))
                 
-                console.log(nameAllPhoto)
+             
                 updateLinkPhotoUser(nameNewPhoto)
 
             }
